@@ -92,7 +92,6 @@ public class SignUpActivity extends AppCompatActivity {
                     loading(false);
                     showToast(exception.getMessage());
                 });
-
     }
 
 
