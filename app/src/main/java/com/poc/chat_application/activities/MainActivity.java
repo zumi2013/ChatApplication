@@ -13,7 +13,6 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.messaging.FirebaseMessaging;
-import com.poc.chat_application.R;
 import com.poc.chat_application.databinding.ActivityMainBinding;
 import com.poc.chat_application.utilities.Constants;
 import com.poc.chat_application.utilities.PreferenceManager;
@@ -34,11 +33,14 @@ public class MainActivity extends AppCompatActivity {
         loadUserDetails();
         getToken();
         setListeners();
-
     }
 
     private void setListeners() {
+
+
         binding.imageSignOut.setOnClickListener(v -> signOut());
+        binding.fabNewChat.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), UsersActivity.class)));
+
     }
 
     private void loadUserDetails() {
@@ -65,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
                 );
 
         documentReference.update(Constants.KEY_FCM_TOKEN, token)
-                .addOnSuccessListener(unused -> showToast("Token updated Successfully"))
                 .addOnFailureListener(e -> showToast("Unable to update Token"));
 
     }
