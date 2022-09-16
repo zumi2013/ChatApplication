@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Poc/ChatApplication/app/src/main/res/layout/activity_chat.xml" value="0.22" />
+        <entry key="..\:/Poc/ChatApplication/app/src/main/res/layout/activity_users.xml" value="0.1641337386018237" />
+        <entry key="..\:/Poc/ChatApplication/app/src/main/res/layout/item_container_received_message.xml" value="0.1641337386018237" />
+        <entry key="..\:/Poc/ChatApplication/app/src/main/res/layout/item_container_sent_message.xml" value="0.1641337386018237" />
+        <entry key="..\:/Poc/ChatApplication/app/src/main/res/layout/item_container_user.xml" value="0.1641337386018237" />
         <entry key="..\:/Poc/Chat_Application/app/src/main/res/drawable/background_chat_input.xml" value="0.1325" />
         <entry key="..\:/Poc/Chat_Application/app/src/main/res/drawable/background_content_bottom.xml" value="0.1325" />
         <entry key="..\:/Poc/Chat_Application/app/src/main/res/drawable/background_content_top.xml" value="0.1325" />
