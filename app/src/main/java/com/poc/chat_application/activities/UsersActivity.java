@@ -1,25 +1,20 @@
 package com.poc.chat_application.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.poc.chat_application.R;
 import com.poc.chat_application.adapters.UsersAdapter;
 import com.poc.chat_application.databinding.ActivityUsersBinding;
 import com.poc.chat_application.listeners.UserListener;
 import com.poc.chat_application.models.User;
 import com.poc.chat_application.utilities.Constants;
 import com.poc.chat_application.utilities.PreferenceManager;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class UsersActivity extends AppCompatActivity implements UserListener {
+public class UsersActivity extends BaseActivity implements UserListener {
     private ActivityUsersBinding binding;
     private PreferenceManager preferenceManager;
 

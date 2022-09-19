@@ -57,11 +57,14 @@ dependencies {
     //Firebase
 
     implementation platform('com.google.firebase:firebase-bom:30.2.0')
-
     implementation 'com.google.firebase:firebase-messaging:20.1.0'
     implementation 'com.google.firebase:firebase-firestore:21.4.0'
 
     //Multidex
     implementation 'androidx.multidex:multidex:2.0.1'
+
+    //Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-scalars:2.9.0'
 
 }
