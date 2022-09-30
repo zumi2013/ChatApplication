@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Base64;
 import android.view.View;
 import android.widget.Toast;
+
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.EventListener;
@@ -22,10 +23,12 @@ import com.poc.chat_application.models.ChatMessage;
 import com.poc.chat_application.models.User;
 import com.poc.chat_application.utilities.Constants;
 import com.poc.chat_application.utilities.PreferenceManager;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 public class MainActivity extends BaseActivity implements ConversationListner {
 
@@ -50,7 +53,7 @@ public class MainActivity extends BaseActivity implements ConversationListner {
 
     private void init() {
         conversations = new ArrayList<>();
-        conversationsAdapter = new RecentConversationsAdapter(conversations,this);
+        conversationsAdapter = new RecentConversationsAdapter(conversations, this);
         binding.conversationRecyclerView.setAdapter(conversationsAdapter);
         database = FirebaseFirestore.getInstance();
     }
@@ -75,7 +78,7 @@ public class MainActivity extends BaseActivity implements ConversationListner {
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
     }
 
-    private void listenConversation(){
+    private void listenConversation() {
         database.collection(Constants.KEY_COLLECTION_CONVERSATIONS)
                 .whereEqualTo(Constants.KEY_SENDER_ID, preferenceManager.getString(Constants.KEY_USER_ID))
                 .addSnapshotListener(eventListener);
@@ -86,7 +89,7 @@ public class MainActivity extends BaseActivity implements ConversationListner {
 
     private final EventListener<QuerySnapshot> eventListener = (value, error) -> {
         if (error != null) {
-            for (DocumentChange documentChange : value.getDocumentChanges()) {
+            for (DocumentChange documentChange : Objects.requireNonNull(value).getDocumentChanges()) {
                 if (documentChange.getType() == DocumentChange.Type.ADDED) {
                     String senderID = documentChange.getDocument().getString(Constants.KEY_SENDER_ID);
                     String receiverID = documentChange.getDocument().getString(Constants.KEY_RECEIVER_ID);
@@ -130,6 +133,7 @@ public class MainActivity extends BaseActivity implements ConversationListner {
     }
 
     private void updateToken(String token) {
+        preferenceManager.putString(Constants.KEY_FCM_TOKEN, token);
         FirebaseFirestore database = FirebaseFirestore.getInstance();
         DocumentReference documentReference =
                 database.collection(Constants.KEY_COLLECTION_USERS).document(
@@ -160,7 +164,7 @@ public class MainActivity extends BaseActivity implements ConversationListner {
 
     @Override
     public void onConverstionClicked(User user) {
-        Intent intent = new Intent(getApplicationContext(),ChatActivity.class);
+        Intent intent = new Intent(getApplicationContext(), ChatActivity.class);
         intent.putExtra(Constants.KEY_USER, user);
         startActivity(intent);
 

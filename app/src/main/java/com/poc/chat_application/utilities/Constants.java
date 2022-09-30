@@ -1,5 +1,8 @@
 package com.poc.chat_application.utilities;
 
+import java.util.HashMap;
+import java.util.HashSet;
+
 public class Constants {
     public static final String KEY_COLLECTION_USERS = "users";
     public static final String KEY_NAME = "name";
@@ -23,5 +26,25 @@ public class Constants {
     public static final String KEY_RECEIVER_IMAGE = "receiverImage";
     public static final String KEY_LAST_MESSAGE = "lastMessage";
     public static final String KEY_AVAILABILITY = "availability";
+    public static final String REMOTE_METHOD_AUTHORIZATION = "Authorization";
+    public static final String REMOTE_METHOD_CONTENT_TYPE = "content-type";
+    public static final String REMOTE_MESSAGE_DATA = "data";
+    public static final String REMOTE_MSG_REGISTRATION_IDS = "registration_ids";
 
+    public static HashMap<String, String> remoteMsgHeader = null;
+
+    public static HashMap<String, String> getRemoteMsgHeader() {
+        if (remoteMsgHeader != null) {
+            remoteMsgHeader = new HashMap<>();
+            remoteMsgHeader.put(
+                    REMOTE_METHOD_AUTHORIZATION,
+                    "key=AAAAv31GVFk:APA91bFwE3ZKNGBnZ26SdVjOEPEr9shtBLOFRKZTHLmKHPSalXK701ruwBnY69kDu-sk2Fbxitl3pX0FrZJer1T16V2jqEtfVpbFOAakVFPiQBhCVWalXsciUiDRukO-hkC-QOIDwDsV"
+            );
+            remoteMsgHeader.put(
+                    REMOTE_METHOD_CONTENT_TYPE,
+                    "application/json"
+            );
+        }
+        return remoteMsgHeader;
+    }
 }
